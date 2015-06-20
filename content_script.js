@@ -49,20 +49,27 @@ $("table").each(function(){
 // alert(course_code);
 // alert(course_score);
 
+//var sessionid = ''; 
+//chrome.cookies.get({url:'http://140.119.19.39', name:'sessionid'}, function(cookie) { sessionid = cookie.value;}); 
+
+
+
 // var courses = [{ "user_id": "128", "course_id": "700",
 //                 "comment": "test", "score": "56" }];
 
-// alert("start");
+//alert(sessionid);
 //跨網域
 $.ajax({
     type: "POST",
-    url: "http://140.119.19.39:80/courses_save/",
+    url: "http://140.119.19.39:8000/courses_save/",
     // The key needs to match your method's input parameter (case-sensitive).
     data: { 'course_year[]' : course_year,
     		'course_semester[]' : course_semester,
     		'course_name[]' : course_name,
     		'course_code[]' : course_code,
-    		'course_score[]' : course_score }, 
+    		'course_score[]' : course_score ,
+    		'sessionid' : sessionid,
+    	  }, 
     //data: { request: '123asd'},
     // contentType: "application/json; charset=utf-8",
     //dataType: 'json', 
