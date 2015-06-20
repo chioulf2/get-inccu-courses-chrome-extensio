@@ -3,6 +3,8 @@
 //alert('a');
 
 
+var course_year = []; //學年
+var course_semester = []; //上/下學期
 var course_name = [];  //課程名稱陣列
 var course_code = []; //科目代碼
 var course_score = []; //分數 如果不是數字可能不要存?
@@ -24,6 +26,8 @@ $("table").each(function(){
 					var course = $(this).children(); //全部課程 eq(0~?).children(":first").html()表示課程詳細資訊
 					//如果成績為數字 再繼續存進去 不然沒成績
 					if(!isNaN(course.eq(6).children(":first").html()) ){
+						course_year.push($.trim(course.eq(0).children(":first").html()));
+						course_semester.push($.trim(course.eq(1).children(":first").html()));
 						course_name.push($.trim(course.eq(3).children(":first").html()));
 						course_code.push($.trim(course.eq(2).children(":first").html()));
 						course_score.push($.trim(course.eq(6).children(":first").html()));
@@ -54,7 +58,9 @@ $.ajax({
     type: "POST",
     url: "http://140.119.19.39:80/courses_save/",
     // The key needs to match your method's input parameter (case-sensitive).
-    data: { 'course_name[]' : course_name,
+    data: { 'course_year[]' : course_year,
+    		'course_semester[]' : course_semester,
+    		'course_name[]' : course_name,
     		'course_code[]' : course_code,
     		'course_score[]' : course_score }, 
     //data: { request: '123asd'},
