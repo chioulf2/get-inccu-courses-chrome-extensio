@@ -6,7 +6,9 @@
   "version" :  "1.0" ,
 
   "permissions" :  [ 
-    "activeTab"
+    "activeTab",
+    "cookies",
+    "*://*.140.119.19.39/*"
   ], 
 
   "background": {
